@@ -1,0 +1,72 @@
+#head{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -5px 5px red ;
+    border:2px solid black;
+    border-radius: 10px;
+
+}
+body{
+    background-color:rgb(246, 246, 246);
+background-image:url(backgroundzoho.png);
+background-repeat: no-repeat;
+background-size: cover;
+
+
+}
+
+#options{
+    display :flex;
+justify-content: space-around;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+}
+
+.Help{
+    width: 300px;
+    height: 90px;
+    margin:20px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: -5px 5px red;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border:2px solid black;
+    transition: all 0.25s ease;
+    cursor: pointer;
+
+
+}
+.Helper{
+    width: 300px;
+    height: 90px;
+    margin:20px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: -5px 5px red;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border:2px solid black;
+    transition: all 0.25s ease;
+    cursor: pointer;
+
+
+}
+.Help:hover, .Helper:hover {
+
+    background-color:rgba(255,255,255,0.7);
+    cursor: pointer;
+    transform: translateX(4px);
+    transform: translateY(-4px);
+}
+h1{
+    font-family: 'Times New Roman', serif;
+}
+#zohoForm {
+  display: none;
+  margin-top: 30px;
+}
