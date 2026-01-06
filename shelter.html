@@ -1,8 +1,9 @@
+
 <!doctype html>
 <html >
     <head>
         <title>Disaster helper</title>
-
+        
 <meta charset="utf-8">
 
 <meta name="description" content="Disaster Helper is a social-impact prototype web platform developed for hackathon and ideathon purposes to support disaster response and relief coordination. The platform enables affected citizens to find nearby shelters, food distribution centers, and medical assistance, while also allowing volunteers to register and support relief operations. The system integrates Zoho Creator forms and reports for real-time data collection and monitoring, combined with a responsive frontend built using HTML, CSS, and JavaScript.">
@@ -24,14 +25,12 @@ Sumanth – 8124979808 – sumanthsumanth2007@gmail.com
 <meta name="contact" content="Primary Contact: Sai Shreyash K S">
 
 <meta name="disclaimer" content="This project is a prototype developed for educational and hackathon purposes only. It is not an official government or emergency service platform.">
-
    <link rel="stylesheet" href="disaster helper.css" >
 
    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     </head>
-        
     <body>
-
+        
 
 <!-- Glossy 3D Heart Background -->
 <div class="heart-background">
@@ -43,43 +42,75 @@ Sumanth – 8124979808 – sumanthsumanth2007@gmail.com
         <div class="sparkle-2"></div>
     </div>
 </div>
-
-
-<div id="head">
- <div>
-    <h1>
-    Disaster Helper
-    </h1>
-    
+<div id="top">
+  <h1 id="topTitle">Shelter Locations</h1>
 </div>
-</div>
+   
 <br><br><br>
+<div class="shelter-layout">
 
-<div id="options">
+  <!-- LEFT: Shelter List -->
+  <div class="shelter-left">
 
+    <div class="shelter-card">
+      <h2>Govt Higher Secondary School</h2>
+      <p>Triplicane, Chennai</p>
+      <button onclick="updateShelterMap('Government Higher Secondary School Triplicane Chennai')">
+        View Shelter
+      </button>
+    </div>
 
-    <div class="Helper" id="helpTrigger" onclick="helpTrigger() ">
-        <h1>
-            Want Help?
-        </h1>
+    <div class="shelter-card">
+      <h2>Corporation Middle School</h2>
+      <p>Royapuram, Chennai</p>
+      <button onclick="updateShelterMap('Corporation Middle School Royapuram Chennai')">
+        View Shelter
+      </button>
+    </div>
+
+    <div class="shelter-card">
+      <h2>Govt Girls Higher Secondary School</h2>
+      <p>Mylapore, Chennai</p>
+      <button onclick="updateShelterMap('Government Girls Higher Secondary School Mylapore Chennai')">
+        View Shelter
+      </button>
+    </div>
+
+    <div class="shelter-card">
+      <h3>Corporation Primary School</h3>
+      <p>T. Nagar, Chennai</p>
+      <button onclick="updateShelterMap('Corporation Primary School T Nagar Chennai')">
+        View Shelter
+      </button>
+    </div>
+
+    <div class="shelter-card">
+      <h2>Govt Boys Higher Secondary School</h2>
+      <p>Washermanpet, Chennai</p>
+      <button onclick="updateShelterMap('Government Boys Higher Secondary School Washermanpet Chennai')">
+        View Shelter
+      </button>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: MAP -->
+  <div class="shelter-right">
+    <iframe
+      id="shelterMap"
+      src="https://www.google.com/maps?q=Government+Higher+Secondary+School+Triplicane+Chennai&output=embed"
+      width="100%"
+      height="100%"
+      style="border:0;"
+      loading=" lazy">
+    </iframe>
+  </div>
+
 </div>
-<div class="Helper" id="volunteerTrigger" onclick="volunteerTrigger() " >
-    <h1>Want to volunteer?</h1>
-</div>
-</div>
-<br><br><br><br>
 
-<footer class="disclaimer">
-  <p>
-    <strong>Disclaimer:</strong>
-This website is a prototype developed for educational and hackathon purposes only. 
-The information collected through this platform is intended solely for demonstration 
-and testing of functionality. This platform is not an official government or emergency 
-service portal. The creators are not responsible for any real-world actions taken based 
-on the information provided on this website.
-
-  </p>
-</footer>
- <script src="disaster helper.js"></script>
-        </body>
-    </html>
+    
+    
+    <script src="disaster helper.js"></script>
+    
+    </body>
+</html>

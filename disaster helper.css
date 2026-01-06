@@ -7,14 +7,179 @@
     border-radius: 10px;
 
 }
-body{
-    background-color:rgb(246, 246, 246);
-background-image:url(backgroundzoho.png);
-background-repeat: no-repeat;
-background-size: cover;
 
+/* ========== GLOSSY 3D HEART BACKGROUND ========== */
 
+.heart-background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none;
 }
+
+.heart-3d {
+    position: relative;
+    width: 200px;
+    height: 180px;
+    animation: heartbeat 2s ease-in-out infinite;
+    filter: drop-shadow(0 15px 30px rgba(220, 0, 0, 0.15));
+    opacity: 0.4;
+}
+
+.heart-3d::before,
+.heart-3d::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 160px;
+    background: #ffb3b3;
+    border-radius: 100px 100px 0 0;
+    box-shadow: 
+        inset 30px 20px 40px rgba(255, 255, 255, 0.5),
+        inset -15px -15px 30px rgba(0, 0, 0, 0.1),
+        0 0 30px rgba(255, 0, 0, 0.2);
+}
+
+.heart-3d::before {
+    left: 100px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.heart-3d::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+/* Main glossy highlight */
+.heart-3d .shine-main {
+    position: absolute;
+    top: 30px;
+    left: 55px;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(ellipse at 30% 30%, 
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0.6) 20%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 70%);
+    border-radius: 50%;
+    transform: rotate(-25deg);
+    filter: blur(8px);
+}
+
+/* Secondary highlight */
+.heart-3d .shine-secondary {
+    position: absolute;
+    top: 60px;
+    left: 40px;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle at 40% 40%, 
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(255, 255, 255, 0.2) 30%,
+        transparent 60%);
+    border-radius: 50%;
+    filter: blur(5px);
+}
+
+/* Small sparkle highlights */
+.heart-3d .sparkle-1 {
+    position: absolute;
+    top: 25px;
+    left: 70px;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, 
+        rgba(255, 255, 255, 0.9) 0%,
+        transparent 60%);
+    border-radius: 50%;
+    filter: blur(2px);
+    animation: sparkle 3s ease-in-out infinite;
+}
+
+.heart-3d .sparkle-2 {
+    position: absolute;
+    top: 50px;
+    left: 110px;
+    width: 15px;
+    height: 15px;
+    background: radial-gradient(circle, 
+        rgba(255, 255, 255, 0.8) 0%,
+        transparent 60%);
+    border-radius: 50%;
+    filter: blur(1px);
+    animation: sparkle 2.5s ease-in-out infinite 0.5s;
+}
+
+/* Ambient glow */
+.heart-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, 
+        rgba(255, 180, 180, 0.08) 0%, 
+        rgba(255, 200, 200, 0.04) 30%, 
+        rgba(255, 220, 220, 0.01) 50%,
+        transparent 70%);
+    animation: glowPulse 2s ease-in-out infinite;
+    filter: blur(40px);
+}
+
+/* Animations */
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    14% {
+        transform: scale(1.05);
+    }
+    28% {
+        transform: scale(1);
+    }
+    42% {
+        transform: scale(1.08);
+    }
+    56%, 100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+        opacity: 0.4;
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Update body background to white */
+body {
+    background: #ffffff !important;
+    background-image: none !important;
+}
+
 
 #options{
     display :flex;
@@ -22,9 +187,10 @@ justify-content: space-around;
     align-items: center;
     margin: 20px;
     padding: 20px;
+    background-size: cover;
 }
 
-.Help{
+.Help, .Helper {
     width: 300px;
     height: 90px;
     margin:20px;
@@ -40,22 +206,8 @@ justify-content: space-around;
 
 
 }
-.Helper{
-    width: 300px;
-    height: 90px;
-    margin:20px;
-    padding: 5px;
-    border-radius: 10px;
-    box-shadow: -5px 5px red;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    border:2px solid black;
-    transition: all 0.25s ease;
-    cursor: pointer;
 
 
-}
 .Help:hover, .Helper:hover {
 
     background-color:rgba(255,255,255,0.7);
@@ -69,4 +221,292 @@ h1{
 #zohoForm {
   display: none;
   margin-top: 30px;
+}
+#headhelp{
+    font-family: 'Times New Roman', serif;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -5px 5px red ;
+    border:2px solid black;
+    border-radius: 10px;
+
+}
+#optionshelp{
+    display :flex;
+justify-content: space-around;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;  
+    }
+    .food:hover, .shelter:hover, .medical:hover {
+
+    background-color:rgba(255,255,255,0.7);
+    cursor: pointer;
+    transform: translateX(4px);
+    transform: translateY(-4px);
+}
+.food, .shelter, .medical {
+        width: 300px;
+    height: 90px;
+    margin:20px;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: -5px 5px red;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    border:2px solid black;
+    transition: all 0.25s ease;
+    cursor: pointer;}
+  
+  .disclaimer {
+  display: block;
+  margin: 60px 20px 20px 20px;
+  padding: 20px;
+  font-size: 14px;
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: -5px 5px red;
+}
+#zohoForm {
+  display: none;
+  margin-top: 30px;
+}
+
+#top{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -5px 5px red ;
+    border:2px solid black;
+    border-radius: 10px;
+}
+.t1{
+ 
+    font-family: 'Times New Roman', serif;
+height: 90px;
+width: 300px;
+
+}
+#inside{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -5px 5px red ;
+    border:2px solid black;
+    border-radius: 10px;
+    margin: 20px;
+    padding:20px;
+    width: 1250px;
+    height: 500px;
+gap: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 35% 1fr; /* 35% left, remaining right */
+  gap: 30px;
+  padding: 30px;
+  border:2px solid black;
+  box-shadow: -5px 5px red ;
+  border-radius: 25px;
+}
+
+/* LEFT */
+.left-panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* RIGHT */
+.right-panel {
+  background: #fff;
+  border-radius: 12px;
+  min-height: 500px;
+ 
+}
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* stack vertically on mobile */
+  }
+}
+.shelters-wrapper {
+  width: 100%;
+  padding: 20px;
+}
+
+.shelter-card {
+  margin-bottom: 30px;
+}
+
+.shelter-layout {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  gap: 20px;
+  padding: 20px;
+}
+
+.shelter-left {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.shelter-card {
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.shelter-card button {
+  margin-top: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.shelter-right {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 500px;
+}
+
+/* Mobile safe */
+@media (max-width: 768px) {
+  .shelter-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.shelter-layout {
+  border: 2px solid black;
+  border-radius: 16px;
+  box-shadow: -5px 5px red;
+
+  padding: 20px;
+  margin: 20px;
+
+  box-sizing: border-box; /* THIS is the key for even borders */
+}
+
+.shelter-card {
+  border: 1.5px solid #000;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  background: #fff;
+}
+
+.shelter-card button {
+  border: 1.5px solid #000;
+  background: #f9f9f9;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.shelter-card button:hover {
+  background: #000;
+  color: #fff;
+}
+.shelter-right {
+  border: 2px solid #000;
+  border-radius: 14px;
+  overflow: hidden; /* REQUIRED for iframe corners */
+  background: #fff;
+}
+.shelter-layout{
+    box-shadow: -5px 5px red ;
+    border:2px solid black;
+    border-radius: 25px;
+    width: 100%;
+height: 100%;   }
+.grid-2,
+.food-layout,
+.shelter-layout,
+.emergency-layout {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  gap: 20px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .grid-2,
+  .food-layout,
+  .shelter-layout,
+  .emergency-layout {
+    grid-template-columns: 1fr;   /* stack vertically */
+  }
+
+  /* Map height fix for mobile */
+  .food-right,
+  .shelter-right,
+  .map-view {
+    min-height: 320px;
+  }
+}
+/* ===================================
+   MOBILE FIXES ONLY (DESKTOP UNTOUCHED)
+   =================================== */
+
+@media (max-width: 768px) {
+
+  /* Prevent side scrolling */
+  html, body {
+    overflow-x: hidden;
+  }
+
+  /* Stack option boxes vertically */
+  #options,
+  #optionshelp {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  /* Make cards fit screen */
+  .Helper,
+  .shelter,
+  .food,
+  .medical {
+    width: 100%;
+    min-height: 110px;
+  }
+
+  /* Reduce excessive vertical gaps caused by <br> */
+  br {
+    display: none;
+  }
+
+  /* Scale headings only on mobile */
+  #head h1,
+  #headhelp h1 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  /* Footer readability on mobile */
+  .disclaimer {
+    padding: 14px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+/* ===== FINAL OUTER BORDER FIX ===== */
+.shelter-layout {
+  border: 2px solid black !important;
+  border-radius: 16px !important;
+  box-shadow: -5px 5px red !important;
+
+  padding: 20px;
+  margin: 20px;
+
+  box-sizing: border-box;
 }
